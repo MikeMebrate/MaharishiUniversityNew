@@ -10,16 +10,19 @@ public class Matches {
 
         if(sizeOfP != a.length) return 0;
         else{
-            int j=0, k=0;
+            int j=0, k=0,sign;
             for(int i=0; i<p.length; i++){
-                while(j < a.length && k < p[i] ){
-                    if(p[i] > 0 && a[j] > 0){
-                        j++;
-                    }else if(p[i] < 0 && a[j] < 0) {
-                        j++;
-                    }else return 0;
+
+                if(p[i] < 0) sign=-1*p[i];
+                else sign = p[i];
+
+                while(j < a.length && k < sign ) {
+                    if(p[i] > 0 && a[j] > 0) j++;
+                    else if(p[i] < 0 && a[j] < 0) j++;
+                    else return 0;
                     k++;
                 }
+                k=0;
 
             }
         }
